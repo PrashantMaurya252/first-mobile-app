@@ -40,7 +40,9 @@ export async function login() {
     if(!secret || !userId) throw new Error('Failed to login')
     
     const session = await account.createSession(userId,secret);
+    console.log(session,"session")
     if(!session) throw new Error('Failed to create a session')
+    return true
   } catch (error) {
     console.log(error);
     return false;
@@ -50,14 +52,15 @@ export async function login() {
 export async function logout(){
     try {
         await account.deleteSession('current')
+        console.log("logout calling")
         return true
     } catch (error) {
-        console.log(error)
+        console.log(error,"error")
         return false
     }
 }
 
-export async function getUser(){
+export async function getCurrentUser(){
     try {
         const response = await account.get();
         if(response.$id){
