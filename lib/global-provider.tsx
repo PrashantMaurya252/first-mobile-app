@@ -23,7 +23,7 @@ export const GlobalProvider = ({children}:{children:ReactNode})=>{
     const {data:user,loading,refetch} = useAppwrite({fn:getCurrentUser})
 
     const isLoggedIn = !!user
-    console.log(JSON.stringify(user,null ,2),"User")
+   
     return(
         <GlobalContext.Provider value={{
             isLoggedIn,
